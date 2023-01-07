@@ -6,6 +6,7 @@ const apiCountryURL = "https://countryflagsapi.com/png/";
 
 const cityInput = document.querySelector('#city-input');
 const searchBtn = document.querySelector('#search');
+const loading = document.querySelector('#loading-container').classList;
 
 const cityElement = document.querySelector('#city');
 const tempElement = document.querySelector('#temperature span');
@@ -22,9 +23,17 @@ const getWeatherData = async(city) => {
     try {
         const response = await fetch(`/.netlify/functions/fetch-weather?city=${city}`)  
         const data = await response.json();
-        changeBG(city)
-        console.log(data);
-        return data
+
+        loading.add('hide');
+        
+        switch (data.status){
+            case 404:
+                alert(data.statusText);
+                document.body.style.background = "linear-gradient(to top, #4facfe 0%, #00f2fe 100%)";
+                return;
+            default:
+                return data;
+        }
     } catch (error) {
         console.error(error);
     }
@@ -32,22 +41,18 @@ const getWeatherData = async(city) => {
 }
 
 const showWeatherData = async (city) => {
-    const data = await getWeatherData(city);
-
-    if(data.cod == 404) {
-        alert(data.message)
+    if (!city) {
+        alert("Nada foi digitado :/ ")
         return
     }
 
-    cityElement.innerText = data.name;
-    countryElement.setAttribute("src", apiCountryURL + data.sys.country )
-    tempElement.innerText = parseInt(data.main.temp);
-    descElement.innerText = data.weather[0].description;
-    weatherIconElement.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
-    umidityElement.innerText = `${data.main.humidity}%`;
-    windElement.innerText = `${data.wind.speed}km/h`;
+    weatherContainer.classList.add('hide');
+    loading.remove('hide')
 
-    weatherContainer.classList.remove("hide");
+    const data = await getWeatherData(city);
+
+    updateDOM(data);
+    changeBG(city)
 }
 
 const changeBG = (city) => {
@@ -57,15 +62,23 @@ const changeBG = (city) => {
     document.body.style.background = `url("https://source.unsplash.com/1280x720/?${city}+lugar") no-repeat center center`
     document.body.style.backgroundSize = 'cover'
 }
+
+const updateDOM = (data) => {
+    cityElement.innerText = data.name;
+    countryElement.setAttribute("src", apiCountryURL + data.sys.country )
+    tempElement.innerText = parseInt(data.main.temp);
+    descElement.innerText = data.weather[0].description;
+    weatherIconElement.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
+    umidityElement.innerText = `${data.main.humidity}%`;
+    windElement.innerText = `${data.wind.speed}km/h`;
+    weatherContainer.classList.remove("hide");
+}
+
 //Eventos
 
 searchBtn.addEventListener('click', (e) => {
-
     e.preventDefault()
-
     const city =  cityInput.value
-
-
     showWeatherData(city);
 });
 

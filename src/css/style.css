@@ -77,6 +77,12 @@ body {
     border-radius: 0 1.5rem 1.5rem 0;
 }
 
+/*loading*/
+
+#loading-container img {
+    width: 100%;
+}
+
 /*Clima*/
 
 #weather-data {
