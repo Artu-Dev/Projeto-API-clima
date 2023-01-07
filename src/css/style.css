@@ -1,0 +1,141 @@
+/* Definição de cores e fontes */
+:root {
+    --primary-color: #6D9886;
+    --secondary-color: #393E46   ;
+    --font-primary: 'Josefin Sans', sans-serif;
+}
+
+  /* Reset de margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+}
+
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to top, #4facfe 0%, #00f2fe 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.hide {
+    display: none;
+}
+
+  /* Container geral */
+.container {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    max-width: 400px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.24);
+    color: #FDFDFD;
+    border-radius: .8rem;
+}
+
+  /* Formulário de busca */
+
+.form h3 {
+    margin-bottom: 1rem;
+    font-size: 2em;
+    text-align: center;
+}
+
+.form-input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 25rem;
+}
+
+.form-input-container input {
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    outline: none;
+    padding: 0.6rem;
+    font-family: var(--font-primary);
+    font-size: 1em;
+    border-radius: 1.5rem 0 0 1.5rem;
+}
+
+.form-input-container input::placeholder {
+    color: var(--primary-color);
+}
+
+.form-input-container button {
+    background: var(--primary-color);
+    border: none;
+    min-width: 4rem;
+    color: #fff;
+    font-size: 1em;
+    padding: 0.6rem 1.3rem;
+    cursor: pointer;
+    border-radius: 0 1.5rem 1.5rem 0;
+}
+
+/*Clima*/
+
+#weather-data {
+    border-top: 1px solid #FFF;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    text-align: center;
+}
+
+#weather-data h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .6rem;
+}
+
+#weather-data h2 i {
+    font-size: 1em;
+    color: rgb(250, 48, 48);
+}
+
+#weather-data span {
+    margin: 0.6rem;
+}
+
+#country {
+    height: 20px;
+}
+
+#description {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+#description-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .6rem 0;
+}
+
+#description-container img {
+    filter: drop-shadow(0 0 4px rgb(255, 255, 255));
+}
+
+#details-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#details-container  #umidity {
+    border-right: 1px solid #FFF;
+    margin: .6rem;
+    padding: .6rem;
+}
+#details-container  #umidity i {
+    color:#00f2fe;
+}
+#details-container #wind i {
+    color: darkgray;
+}
