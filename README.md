@@ -27,7 +27,11 @@ Ao entrar no site, você verá um campo para inserir o nome da cidade e o país.
 - API do Unsplash
 - API Flagpedia
 
-## Estrutura do Projeto
+## Contribuição
 
-A seguir, você pode ver a estrutura completa do projeto:
+Se você quiser contribuir para o projeto, sinta-se livre para abrir uma issue ou enviar um pull request.
+
+## Licença
+
+Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE.md](https://github.com/<seu-usuario>/openweather/blob/main/LICENSE) para mais detalhes.
 
