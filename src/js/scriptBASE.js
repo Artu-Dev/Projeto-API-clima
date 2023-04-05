@@ -1,6 +1,6 @@
 //variaveis e seleção de eventos
 
-const apiCountryURL = "https://countryflagsapi.com/png/";
+const apiCountryURL = "https://flagcdn.com/56x42/";
 
 
 
@@ -59,16 +59,16 @@ const changeBG = (city) => {
     if (!city) {
         return
     }
-    document.body.style.background = `url("https://source.unsplash.com/1280x720/?${city}+lugar") no-repeat center center`
+    document.body.style.background = `url("https://source.unsplash.com/1280x720/?${city}+city") no-repeat center center`
     document.body.style.backgroundSize = 'cover'
 }
 
 const updateDOM = (data) => {
     cityElement.innerText = data.name;
-    countryElement.setAttribute("src", apiCountryURL + data.sys.country )
+    countryElement.setAttribute("src", `apiCountryURL${data.sys.country}.webp` );
     tempElement.innerText = parseInt(data.main.temp);
     descElement.innerText = data.weather[0].description;
-    weatherIconElement.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
+    weatherIconElement.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
     umidityElement.innerText = `${data.main.humidity}%`;
     windElement.innerText = `${data.wind.speed}km/h`;
     weatherContainer.classList.remove("hide");
