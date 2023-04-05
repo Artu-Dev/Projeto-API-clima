@@ -65,7 +65,7 @@ const changeBG = (city) => {
 
 const updateDOM = (data) => {
     cityElement.innerText = data.name;
-    countryElement.setAttribute("src", `${apiCountryURL}${data.sys.country}.webp` );
+    countryElement.setAttribute("src", `${apiCountryURL.toLowerCase()}${data.sys.country}.webp` );
     tempElement.innerText = parseInt(data.main.temp);
     descElement.innerText = data.weather[0].description;
     weatherIconElement.setAttribute("src", `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
